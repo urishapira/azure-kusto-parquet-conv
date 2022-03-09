@@ -127,7 +127,7 @@ fn top_level_rows_to_csv(
                     let value = if missing_columns.contains(col) {
                         Value::Null
                     } else {
-                        let field_type = row_columns_map.get(col)?;
+                        let field_type = row_columns_map.get(col).expect("Column does not exist.");
                         field_type.to_json_value()
                     };
 
