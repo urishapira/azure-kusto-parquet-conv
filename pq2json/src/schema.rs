@@ -91,7 +91,7 @@ fn field_csl_schema(field_type: &Type) -> (&str, &str) {
                 | ConvertedType::JSON => "dynamic",
                 ConvertedType::UINT_32 => "long",
                 ConvertedType::UINT_64 => "decimal",
-                _ => parquet_physical_to_v3_type(physical_type),
+                _ => parquet_physical_to_csl_type(physical_type),
             };
             (basic_info.name(), csl_type)
         }
@@ -99,7 +99,7 @@ fn field_csl_schema(field_type: &Type) -> (&str, &str) {
     }
 }
 
-fn parquet_physical_to_v3_type(parquet_type: &PhysicalType) -> &str {
+fn parquet_physical_to_csl_type(parquet_type: &PhysicalType) -> &str {
     match parquet_type {
         PhysicalType::BOOLEAN => "bool",
         PhysicalType::INT32 => "int",
